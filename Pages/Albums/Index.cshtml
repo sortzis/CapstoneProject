@@ -2,14 +2,34 @@
 @model CapstoneProject.Pages.Albums.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Choose an Album!";
 }
+
+<head>
+    <link rel="stylesheet" href="~/css/SammisStyles.css" type="text/css"/>
+</head>
 
 <h1>Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        Artist: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter"/>
+        Genre: <select asp-for="AlbumGenres" asp-items="Model.Genre">
+            <option value="">All</option>
+        </select>
+        <input type="submit" value="Filter"/>
+        <a asp-page="./Index" asp-route-sortOrder="desc"
+           style="float:right;background:lightblue;padding:5px;border-radius:10px;text-decoration:none;margin-bottom:10px;color:black;">
+            Sort by Artist (ascending)
+        </a>
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
